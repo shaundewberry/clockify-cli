@@ -83,6 +83,8 @@ nix:
     # Default: inferred from global metadata.
     description: "A simple cli to manage your time entries on Clockify from terminal"
 
+    license: "asl20"
+
     # Repository to push the generated files to.
     repository:
       # Repository owner.
