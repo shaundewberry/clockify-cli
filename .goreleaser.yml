@@ -60,3 +60,52 @@ homebrew_casks:
       name: homebrew-tap
     homepage: https://github.com/lucassabreu/clockify-cli
     description: Helps to interact with Clockfy's API
+
+nix:
+  - name: clockify-cli
+
+    goamd64: v1
+
+    # The project name and current git tag are used in the format string.
+    #
+    # Templates: allowed.
+    commit_msg_template: "{{ .ProjectName }}: {{ .Tag }}"
+
+    # Your app's homepage.
+    #
+    # Templates: allowed.
+    # Default: inferred from global metadata.
+    homepage: "https://clockify-cli.netlify.app/"
+
+    # Your app's description.
+    #
+    # Templates: allowed.
+    # Default: inferred from global metadata.
+    description: "A simple cli to manage your time entries on Clockify from terminal"
+
+    # Repository to push the generated files to.
+    repository:
+      # Repository owner.
+      #
+      # Templates: allowed.
+      owner: lucassabreu
+
+      # Repository name.
+      #
+      # Templates: allowed.
+      name: nux-packages
+
+      # Optionally a branch can be provided.
+      #
+      # Default: default repository branch.
+      # Templates: allowed.
+      branch: main
+
+      # Sets up pull request creation instead of just pushing to the given branch.
+      # Make sure the 'branch' property is different from base before enabling
+      # it.
+      #
+      # This might require a personal access token.
+      pull_request:
+        # Whether to enable it or not.
+        enabled: true
