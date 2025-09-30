@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.56.2] - 2025-09-30
+
+### Fixed
+
+- NUR repository name was wrong
+
 ## [v0.56.1] - 2025-09-30
 
 ### Fixed

@@ -95,7 +95,7 @@ nix:
       # Repository name.
       #
       # Templates: allowed.
-      name: nux-packages
+      name: nur-packages
 
       # Optionally a branch can be provided.
       #
