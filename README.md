@@ -72,6 +72,34 @@ The installed application for a default `go` installation should be located on y
 
 [go-envs]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 
+#### Using `nix`/[NUR](http://github.com/nix-community/NUR)
+
+Add this input, overlay and package into your flake:
+
+```nix
+# ...
+
+  inputs = {
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+# ...
+
+  pkgs = import nixpkgs {
+    inherit system;
+    overlays = [ nur.overlays.default ];
+  };
+
+# ...
+
+  environment.systemPackages = with pkgs; [
+    nur.repos.lucassabreu.clockify-cli
+  ];
+```
+
 #### By Hand
 
 Go to the [releases page](https://github.com/lucassabreu/clockify-cli/releases) and download the pre-compiled

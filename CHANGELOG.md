@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- documentation about nix packages
+
+### Thanks
+
+Thank you to [@Sekky61](https://github.com/Sekky61) for the information
+on Issue [#280](https://github.com/lucassabreu/clockify-cli/pull/280).
+
 ## [v0.56.2] - 2025-09-30
 
 ### Fixed
