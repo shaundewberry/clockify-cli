@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.57.0] - 2025-10-14
+
 ### Added
 
 - documentation about nix packages
@@ -1283,7 +1285,10 @@ time entry.
 - Golang CLI using [cobra](https://github.com/spf13/cobra)
 - Makefile to help setup actions
 
-[Unreleased]: https://github.com/lucassabreu/clockify-cli/compare/v0.56.0...HEAD
+[Unreleased]: https://github.com/lucassabreu/clockify-cli/compare/v0.57.0...HEAD
+[v0.57.0]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.57.0
+[v0.56.2]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.56.2
+[v0.56.1]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.56.1
 [v0.56.0]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.56.0
 [v0.55.2]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.55.2
 [v0.55.1]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.55.1
