@@ -181,3 +181,13 @@ func tagsToStringSlice(tags []dto.Tag) []string {
 func durationToString(d time.Duration) string {
 	return dto.Duration{Duration: d}.HumanString()
 }
+
+func customFieldsToStringSlice(customFields []dto.CustomField) []string {
+	s := make([]string, len(customFields))
+
+	for i, cf := range customFields {
+		s[i] = fmt.Sprintf("%s(%s)=%s", cf.Name, cf.CustomFieldID, cf.Value)
+	}
+
+	return s
+}
