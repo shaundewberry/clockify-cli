@@ -149,6 +149,10 @@ func PrintTimeEntries(
 			opts = opts.WithShowTasks()
 		}
 
+		if config.GetBool(cmdutil.CONF_SHOW_CUSTOM_FIELDS) {
+			opts = opts.WithShowCustomFieds()
+		}
+
 		if config.GetBool(cmdutil.CONF_SHOW_CLIENT) {
 			opts = opts.WithShowClients()
 		}
