@@ -96,6 +96,8 @@ func TimeEntriesPrint(
 
 		header = append(header, "Description", "Tags")
 
+		header = append(header, "Custom Fields")
+
 		tw.SetHeader(header)
 		tw.SetRowLine(true)
 		if width, _, err := term.GetSize(int(os.Stdout.Fd())); err == nil {
@@ -150,6 +152,11 @@ func TimeEntriesPrint(
 				line,
 				t.Description,
 				strings.Join(tagsToStringSlice(t.Tags), "\n"),
+			)
+
+			line = append(
+				line,
+				strings.Join(customFieldsToStringSlice(t.CustomFields), "\n"),
 			)
 
 			tw.Rich(line, colors)
