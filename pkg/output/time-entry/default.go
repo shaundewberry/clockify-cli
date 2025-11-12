@@ -68,7 +68,7 @@ func (teo TimeEntryOutputOptions) WithShowTasks() TimeEntryOutputOptions {
 }
 
 // WithShowCustomFields shows a new column with the custom fields of the time entry
-func (teo TimeEntryOutputOptions) WithShowCustomFieds() TimeEntryOutputOptions {
+func (teo TimeEntryOutputOptions) WithShowCustomFields() TimeEntryOutputOptions {
 	teo.ShowCustomFields = true
 	return teo
 }
