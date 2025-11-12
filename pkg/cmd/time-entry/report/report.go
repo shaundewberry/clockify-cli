@@ -124,9 +124,9 @@ func NewCmdReport(f cmdutil.Factory) *cobra.Command {
 
 			# csv format output
 			$ %[1]s --csv
-			id,description,project.id,project.name,task.id,task.name,start,end,duration,user.id,user.email,user.name,tags...
-			62b87a9785815e619d7ce02e,Example for today,621948458cb9606d934ebb1c,Clockify Cli,62b87a7e984dba2c0669724d,Report Command,2022-06-26 12:25:56,2022-06-26 12:26:47,0:00:51,5c6bf21db079873a55facc08,joe@due.com,John Due,Development (62ae28b72518aa18da2acb49)
-			62b87abb85815e619d7ce034,Example for today (second one),621948458cb9606d934ebb1c,Clockify Cli,62b87a7e984dba2c0669724d,Report Command,2022-06-26 12:26:47,2022-06-26 13:00:00,0:33:13,5c6bf21db079873a55facc08,joe@due.com,John Due,Development (62ae28b72518aa18da2acb49)
+			id,description,project.id,project.name,task.id,task.name,start,end,duration,user.id,user.email,user.name,tags...,customFields...
+			62b87a9785815e619d7ce02e,Example for today,621948458cb9606d934ebb1c,Clockify Cli,62b87a7e984dba2c0669724d,Report Command,2022-06-26 12:25:56,2022-06-26 12:26:47,0:00:51,5c6bf21db079873a55facc08,joe@due.com,John Due,Development (62ae28b72518aa18da2acb49),Example custom field(5e1147fe8c526f38930d57b8)=value
+			62b87abb85815e619d7ce034,Example for today (second one),621948458cb9606d934ebb1c,Clockify Cli,62b87a7e984dba2c0669724d,Report Command,2022-06-26 12:26:47,2022-06-26 13:00:00,0:33:13,5c6bf21db079873a55facc08,joe@due.com,John Due,Development (62ae28b72518aa18da2acb49), Example custom field(5e1147fe8c526f38930d57b8)=value
 		`, "clockify-cli report", "`",
 			timehlp.FullTimeFormat,
 			timehlp.OnlyTimeFormat,

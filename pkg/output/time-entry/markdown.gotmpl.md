@@ -33,7 +33,6 @@
   {{- $customFields = "No Custom Fields" -}}
 {{- end -}}
 
-
 {{- $pad := maxLength .Description $project $tags $customFields $bil -}}
 
 ## _Time Entry_: {{ .ID }}
