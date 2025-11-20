@@ -99,6 +99,7 @@ func TestInitCmd(t *testing.T) {
 
 			setBoolFn(config, cmdutil.CONF_ALLOW_INCOMPLETE, false, false)
 			setBoolFn(config, cmdutil.CONF_SHOW_TASKS, true, true)
+			setBoolFn(config, cmdutil.CONF_SHOW_CUSTOM_FIELDS, true, true)
 			setBoolFn(config, cmdutil.CONF_SHOW_CLIENT, true, true)
 			setBoolFn(config, cmdutil.CONF_SHOW_TOTAL_DURATION, true, true)
 			setBoolFn(config, cmdutil.CONF_DESCR_AUTOCOMP, false, true)
@@ -188,6 +189,10 @@ func TestInitCmd(t *testing.T) {
 			c.ExpectString("No")
 
 			c.ExpectString("show task on time entries")
+			c.SendLine("")
+			c.ExpectString("Yes")
+
+			c.ExpectString("show custom fields")
 			c.SendLine("")
 			c.ExpectString("Yes")
 
