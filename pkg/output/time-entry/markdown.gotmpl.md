@@ -40,7 +40,7 @@
 
 ## _Time Entry_: {{ .ID }}
 
-_Time and date_  
+_Time and date_
 **{{ dsf .TimeInterval.Duration }}** | {{ if eq .TimeInterval.End nil -}}
 Start Time: _{{ formatTimeWS .TimeInterval.Start }}_ 🗓 Today
 {{- else -}}

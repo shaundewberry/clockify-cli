@@ -34,7 +34,7 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 			output: heredoc.Docf(`
 				## _Time Entry_: te1
 
-				_Time and date_  
+				_Time and date_
 				**1:05:01** | Start Time: _%s_ 🗓 Today
 
 				|                 |                          |
@@ -60,7 +60,7 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 			output: heredoc.Doc(`
 				## _Time Entry_: te1
 
-				_Time and date_  
+				_Time and date_
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
 				|                 |                            |
@@ -89,7 +89,7 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 			output: heredoc.Doc(`
 				## _Time Entry_: te1
 
-				_Time and date_  
+				_Time and date_
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
 				|                 |                  |
@@ -119,7 +119,7 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 			output: heredoc.Doc(`
 				## _Time Entry_: te1
 
-				_Time and date_  
+				_Time and date_
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
 				|                 |                                |
@@ -152,7 +152,7 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 			output: heredoc.Doc(`
 				## _Time Entry_: te1
 
-				_Time and date_  
+				_Time and date_
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
 				|                 |                             |
@@ -188,7 +188,7 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 			output: heredoc.Doc(`
 				## _Time Entry_: te1
 
-				_Time and date_  
+				_Time and date_
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
 				|                 |                             |
@@ -225,7 +225,7 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 			output: heredoc.Doc(`
 				## _Time Entry_: te1
 
-				_Time and date_  
+				_Time and date_
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
 				|                 |                                  |
