@@ -24,13 +24,15 @@
 {{- end -}}
 
 {{- $customFields := "" -}}
+{{- $hasCustomFields := false -}}
 {{- with .CustomFields -}}
   {{- range $index, $element := . -}}
-    {{- if ne $index 0 }}{{ $customFields = concat $customFields ", " }}{{ end -}}
-    {{- $customFields = concat $customFields $element.Name ": " $element.Value -}}
+    {{- if ne $element.Value "" -}}
+      {{- if $hasCustomFields }}{{ $customFields = concat $customFields ", " }}{{ end -}}
+      {{- $customFields = concat $customFields $element.Name ": " $element.Value -}}
+      {{- $hasCustomFields = true -}}
+    {{- end -}}
   {{- end -}}
-{{- else -}}
-  {{- $customFields = "No Custom Fields" -}}
 {{- end -}}
 
 {{- $pad := maxLength .Description $project $tags $customFields $bil -}}
@@ -51,4 +53,6 @@ Start Time: _{{ formatTimeWS .TimeInterval.Start }}_ 🗓 Today
 | _Project_       | {{ pad $project $pad }} |
 | _Tags_          | {{ pad $tags $pad }} |
 | _Billable_      | {{ pad $bil $pad }} |
+{{- if $hasCustomFields }}
 | _Custom Fields_ | {{ pad $customFields $pad }} |
+{{- end }}

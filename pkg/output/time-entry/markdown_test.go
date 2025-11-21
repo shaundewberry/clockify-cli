@@ -37,12 +37,12 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 				_Time and date_  
 				**1:05:01** | Start Time: _%s_ 🗓 Today
 
-				|               |                          |
-				|---------------|--------------------------|
-				| _Description_ | Open and without project |
-				| _Project_     | No Project               |
-				| _Tags_        | No Tags                  |
-				| _Billable_    | No                       |
+				|                 |                          |
+				|-----------------|--------------------------|
+				| _Description_   | Open and without project |
+				| _Project_       | No Project               |
+				| _Tags_          | No Tags                  |
+				| _Billable_      | No                       |
 			`, t65Min1SecAgo.UTC().Format(timehlp.SimplerOnlyTimeFormat)),
 		},
 		{
@@ -63,12 +63,12 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 				_Time and date_  
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
-				|               |                            |
-				|---------------|----------------------------|
-				| _Description_ | Closed and without project |
-				| _Project_     | No Project                 |
-				| _Tags_        | No Tags                    |
-				| _Billable_    | No                         |
+				|                 |                            |
+				|-----------------|----------------------------|
+				| _Description_   | Closed and without project |
+				| _Project_       | No Project                 |
+				| _Tags_          | No Tags                    |
+				| _Billable_      | No                         |
 			`),
 		},
 		{
@@ -92,12 +92,12 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 				_Time and date_  
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
-				|               |                  |
-				|---------------|------------------|
-				| _Description_ | With project     |
-				| _Project_     | **Project Name** |
-				| _Tags_        | No Tags          |
-				| _Billable_    | No               |
+				|                 |                  |
+				|-----------------|------------------|
+				| _Description_   | With project     |
+				| _Project_       | **Project Name** |
+				| _Tags_          | No Tags          |
+				| _Billable_      | No               |
 			`),
 		},
 		{
@@ -122,12 +122,12 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 				_Time and date_  
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
-				|               |                                |
-				|---------------|--------------------------------|
-				| _Description_ | With project                   |
-				| _Project_     | **Project Name** - Client Name |
-				| _Tags_        | No Tags                        |
-				| _Billable_    | Yes                            |
+				|                 |                                |
+				|-----------------|--------------------------------|
+				| _Description_   | With project                   |
+				| _Project_       | **Project Name** - Client Name |
+				| _Tags_          | No Tags                        |
+				| _Billable_      | Yes                            |
 			`),
 		},
 		{
@@ -155,12 +155,12 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 				_Time and date_  
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
-				|               |                             |
-				|---------------|-----------------------------|
-				| _Description_ | With project                |
-				| _Project_     | **Project Name**: Task Name |
-				| _Tags_        | No Tags                     |
-				| _Billable_    | Yes                         |
+				|                 |                             |
+				|-----------------|-----------------------------|
+				| _Description_   | With project                |
+				| _Project_       | **Project Name**: Task Name |
+				| _Tags_          | No Tags                     |
+				| _Billable_      | Yes                         |
 			`),
 		},
 		{
@@ -191,12 +191,12 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 				_Time and date_  
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
-				|               |                             |
-				|---------------|-----------------------------|
-				| _Description_ | With project                |
-				| _Project_     | **Project Name**: Task Name |
-				| _Tags_        | Stand-up Meeting            |
-				| _Billable_    | Yes                         |
+				|                 |                             |
+				|-----------------|-----------------------------|
+				| _Description_   | With project                |
+				| _Project_       | **Project Name**: Task Name |
+				| _Tags_          | Stand-up Meeting            |
+				| _Billable_      | Yes                         |
 			`),
 		},
 		{
@@ -228,12 +228,12 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 				_Time and date_  
 				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
 
-				|               |                                  |
-				|---------------|----------------------------------|
-				| _Description_ | With project                     |
-				| _Project_     | **Project Name**: Task Name      |
-				| _Tags_        | A Tag with long name, Normal tag |
-				| _Billable_    | Yes                              |
+				|                 |                                  |
+				|-----------------|----------------------------------|
+				| _Description_   | With project                     |
+				| _Project_       | **Project Name**: Task Name      |
+				| _Tags_          | A Tag with long name, Normal tag |
+				| _Billable_      | Yes                              |
 			`),
 		},
 	}
