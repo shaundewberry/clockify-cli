@@ -205,7 +205,7 @@ func customFieldsToStringSlice(customFields []dto.CustomField) []string {
 	s := make([]string, len(customFields))
 
 	for i, cf := range customFields {
-		s[i] = fmt.Sprintf("%s(%s)=%s", cf.Name, cf.CustomFieldID, cf.Value)
+		s[i] = fmt.Sprintf("%s(%s)=%s", cf.Name, cf.CustomFieldID, cf.ValueAsString())
 	}
 
 	return s

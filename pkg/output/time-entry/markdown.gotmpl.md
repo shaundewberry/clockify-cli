@@ -27,9 +27,10 @@
 {{- $hasCustomFields := false -}}
 {{- with .CustomFields -}}
   {{- range $index, $element := . -}}
-    {{- if ne $element.Value "" -}}
-      {{- if $hasCustomFields }}{{ $customFields = concat $customFields ", " }}{{ end -}}
-      {{- $customFields = concat $customFields $element.Name ": " $element.Value -}}
+    {{- $value := $element.ValueAsString -}}
+    {{- if ne $value "" -}}
+      {{- if ne $index 0 }}{{ $customFields = concat $customFields ", " }}{{ end -}}
+      {{- $customFields = concat $customFields $element.Name ": " $value -}}
       {{- $hasCustomFields = true -}}
     {{- end -}}
   {{- end -}}
