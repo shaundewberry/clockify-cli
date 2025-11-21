@@ -236,6 +236,95 @@ func TestTimeEntriesMarkdownPrint(t *testing.T) {
 				| _Billable_      | Yes                              |
 			`),
 		},
+		{
+			name: "Closed with project, client, task, tags and a custom field with non empty value",
+			tes: []dto.TimeEntry{{
+				WorkspaceID: "w1",
+				ID:          "te1",
+				Billable:    true,
+				Description: "With project",
+				Project: &dto.Project{
+					Name:       "Project Name",
+					ClientName: "Client Name",
+				},
+				Task: &dto.Task{
+					Name: "Task Name",
+				},
+				CustomFields: []dto.CustomField{{
+					CustomFieldID: "abcdef123456",
+					Name:          "A custom field name",
+					TimeEntryId:   "te1",
+					Type:          "DROPDOWN_SINGLE",
+					Value:         "A custom field value",
+				}},
+				Tags: []dto.Tag{
+					{Name: "A Tag with long name"},
+					{Name: "Normal tag"},
+				},
+				TimeInterval: dto.NewTimeInterval(
+					start,
+					&end,
+				),
+			}},
+			output: heredoc.Doc(`
+				## _Time Entry_: te1
+
+				_Time and date_
+				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
+
+				|                 |                                           |
+				|-----------------|-------------------------------------------|
+				| _Description_   | With project                              |
+				| _Project_       | **Project Name**: Task Name               |
+				| _Tags_          | A Tag with long name, Normal tag          |
+				| _Billable_      | Yes                                       |
+				| _Custom Fields_ | A custom field name: A custom field value |
+			`),
+		},
+		{
+			name: "Closed with project, client, task, tags and a custom field with an empty value",
+			tes: []dto.TimeEntry{{
+				WorkspaceID: "w1",
+				ID:          "te1",
+				Billable:    true,
+				Description: "With project",
+				Project: &dto.Project{
+					Name:       "Project Name",
+					ClientName: "Client Name",
+				},
+				Task: &dto.Task{
+					Name: "Task Name",
+				},
+				CustomFields: []dto.CustomField{{
+					CustomFieldID: "abcdef123456",
+					Name:          "A custom field name",
+					TimeEntryId:   "te1",
+					Type:          "DROPDOWN_SINGLE",
+					Value:         "",
+				}},
+				Tags: []dto.Tag{
+					{Name: "A Tag with long name"},
+					{Name: "Normal tag"},
+				},
+				TimeInterval: dto.NewTimeInterval(
+					start,
+					&end,
+				),
+			}},
+			output: heredoc.Doc(`
+				## _Time Entry_: te1
+
+				_Time and date_
+				**0:02:01** | 10:00 - 10:02 🗓 06/15/2024
+
+				|                 |                                  |
+				|-----------------|----------------------------------|
+				| _Description_   | With project                     |
+				| _Project_       | **Project Name**: Task Name      |
+				| _Tags_          | A Tag with long name, Normal tag |
+				| _Billable_      | Yes                              |
+			`),
+		},
 	}
 
 	for _, tt := range tts {
