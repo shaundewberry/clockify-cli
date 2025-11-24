@@ -22,6 +22,7 @@ const (
 	CONF_TOKEN                            = "token"
 	CONF_ALLOW_INCOMPLETE                 = "allow-incomplete"
 	CONF_SHOW_TASKS                       = "show-task"
+	CONF_SHOW_CUSTOM_FIELDS               = "show-custom-fields"
 	CONF_SHOW_CLIENT                      = "show-client"
 	CONF_DESCR_AUTOCOMP                   = "description-autocomplete"
 	CONF_DESCR_AUTOCOMP_DAYS              = "description-autocomplete-days"

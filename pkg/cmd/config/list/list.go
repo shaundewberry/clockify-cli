@@ -25,6 +25,7 @@ func NewCmdList(f cmdutil.Factory) *cobra.Command {
 			interactive: true
 			no-closing: false
 			show-task: false
+			show-custom-fields: false
 			show-total-duration: true
 			token: Yamdas569
 			user:

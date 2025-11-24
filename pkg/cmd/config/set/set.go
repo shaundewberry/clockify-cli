@@ -30,6 +30,7 @@ func NewCmdSet(
 			$ %[1]s token "Yamdas569"
 			$ %[1]s workweek-days monday,tuesday,wednesday,thursday,friday
 			$ %[1]s show-task true
+			$ %[1]s show-custom-fields true
 			$ %[1]s user.id 4564d5a6s4d54a5s4dasd5
 		`, "clockify-cli config set"),
 		RunE: func(cmd *cobra.Command, args []string) error {

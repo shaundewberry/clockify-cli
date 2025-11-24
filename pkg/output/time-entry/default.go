@@ -36,6 +36,7 @@ const (
 // entries
 type TimeEntryOutputOptions struct {
 	ShowTasks         bool
+	ShowCustomFields  bool
 	ShowClients       bool
 	ShowTotalDuration bool
 	TimeFormat        string
@@ -46,6 +47,7 @@ func NewTimeEntryOutputOptions() TimeEntryOutputOptions {
 	return TimeEntryOutputOptions{
 		TimeFormat:        TimeFormatSimple,
 		ShowTasks:         false,
+		ShowCustomFields:  false,
 		ShowClients:       false,
 		ShowTotalDuration: false,
 	}
@@ -62,6 +64,12 @@ func (teo TimeEntryOutputOptions) WithTimeFormat(
 // WithShowTasks shows a new column with the task of the time entry
 func (teo TimeEntryOutputOptions) WithShowTasks() TimeEntryOutputOptions {
 	teo.ShowTasks = true
+	return teo
+}
+
+// WithShowCustomFields shows a new column with the custom fields of the time entry
+func (teo TimeEntryOutputOptions) WithShowCustomFields() TimeEntryOutputOptions {
+	teo.ShowCustomFields = true
 	return teo
 }
 
@@ -95,6 +103,10 @@ func TimeEntriesPrint(
 		}
 
 		header = append(header, "Description", "Tags")
+
+		if options.ShowCustomFields {
+			header = append(header, "Custom Fields")
+		}
 
 		tw.SetHeader(header)
 		tw.SetRowLine(true)
@@ -152,6 +164,13 @@ func TimeEntriesPrint(
 				strings.Join(tagsToStringSlice(t.Tags), "\n"),
 			)
 
+			if options.ShowCustomFields {
+				line = append(
+					line,
+					strings.Join(customFieldsToStringSlice(t.CustomFields), "\n"),
+				)
+			}
+
 			tw.Rich(line, colors)
 		}
 
@@ -180,4 +199,14 @@ func tagsToStringSlice(tags []dto.Tag) []string {
 
 func durationToString(d time.Duration) string {
 	return dto.Duration{Duration: d}.HumanString()
+}
+
+func customFieldsToStringSlice(customFields []dto.CustomField) []string {
+	s := make([]string, len(customFields))
+
+	for i, cf := range customFields {
+		s[i] = fmt.Sprintf("%s(%s)=%s", cf.Name, cf.CustomFieldID, cf.ValueAsString())
+	}
+
+	return s
 }

@@ -23,7 +23,20 @@
   {{- $tags = "No Tags" -}}
 {{- end -}}
 
-{{- $pad := maxLength .Description $project $tags $bil -}}
+{{- $customFields := "" -}}
+{{- $hasCustomFields := false -}}
+{{- with .CustomFields -}}
+  {{- range $index, $element := . -}}
+    {{- $value := $element.ValueAsString -}}
+    {{- if ne $value "" -}}
+      {{- if ne $index 0 }}{{ $customFields = concat $customFields ", " }}{{ end -}}
+      {{- $customFields = concat $customFields $element.Name ": " $value -}}
+      {{- $hasCustomFields = true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $pad := maxLength .Description $project $tags $customFields $bil -}}
 
 ## _Time Entry_: {{ .ID }}
 
@@ -35,9 +48,12 @@ Start Time: _{{ formatTimeWS .TimeInterval.Start }}_ 🗓 Today
 {{- .TimeInterval.Start.Format " 01/02/2006" }}
 {{- end }}
 
-|               | {{ pad "" $pad }} |
-|---------------|-{{ repeatString "-" $pad }}-|
-| _Description_ | {{ pad .Description $pad }} |
-| _Project_     | {{ pad $project $pad }} |
-| _Tags_        | {{ pad $tags $pad }} |
-| _Billable_    | {{ pad $bil $pad }} |
+|                 | {{ pad "" $pad }} |
+|-----------------|-{{ repeatString "-" $pad }}-|
+| _Description_   | {{ pad .Description $pad }} |
+| _Project_       | {{ pad $project $pad }} |
+| _Tags_          | {{ pad $tags $pad }} |
+| _Billable_      | {{ pad $bil $pad }} |
+{{- if $hasCustomFields }}
+| _Custom Fields_ | {{ pad $customFields $pad }} |
+{{- end }}

@@ -2,6 +2,7 @@ package dto
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -103,19 +104,20 @@ type Rate struct {
 
 // TimeEntry DTO
 type TimeEntry struct {
-	ID            string       `json:"id"`
-	Billable      bool         `json:"billable"`
-	Description   string       `json:"description"`
-	HourlyRate    Rate         `json:"hourlyRate"`
-	IsLocked      bool         `json:"isLocked"`
-	Project       *Project     `json:"project"`
-	ProjectID     string       `json:"projectId"`
-	Tags          []Tag        `json:"tags"`
-	Task          *Task        `json:"task"`
-	TimeInterval  TimeInterval `json:"timeInterval"`
-	TotalBillable int64        `json:"totalBillable"`
-	User          *User        `json:"user"`
-	WorkspaceID   string       `json:"workspaceId"`
+	ID            string        `json:"id"`
+	Billable      bool          `json:"billable"`
+	Description   string        `json:"description"`
+	HourlyRate    Rate          `json:"hourlyRate"`
+	IsLocked      bool          `json:"isLocked"`
+	Project       *Project      `json:"project"`
+	CustomFields  []CustomField `json:"customFieldValues"`
+	ProjectID     string        `json:"projectId"`
+	Tags          []Tag         `json:"tags"`
+	Task          *Task         `json:"task"`
+	TimeInterval  TimeInterval  `json:"timeInterval"`
+	TotalBillable int64         `json:"totalBillable"`
+	User          *User         `json:"user"`
+	WorkspaceID   string        `json:"workspaceId"`
 }
 
 // NewTimeInterval will create a TimeInterval from start and end times
@@ -199,11 +201,36 @@ func (e Client) GetName() string { return e.Name }
 
 // CustomField DTO
 type CustomField struct {
-	CustomFieldID string `json:"customFieldId"`
-	Status        string `json:"status"`
-	Name          string `json:"name"`
-	Type          string `json:"type"`
-	Value         string `json:"value"`
+	CustomFieldID string      `json:"customFieldId"`
+	TimeEntryId   string      `json:"timeEntryId"`
+	Name          string      `json:"name"`
+	Type          string      `json:"type"`
+	Value         interface{} `json:"value"`
+}
+
+// ValueAsString converter for CustomFieldDTO
+/*
+   Custom field `Value` can be either a string or an array of strings.
+   This function is used to get the value always as string, using the `|` symbol
+   as separator between each individual string.
+*/
+func (cf CustomField) ValueAsString() string {
+	switch v := cf.Value.(type) {
+	case string:
+		return v
+	case []interface{}:
+		parts := make([]string, len(v))
+		for i, item := range v {
+			parts[i] = fmt.Sprint(item)
+		}
+		return strings.Join(parts, "|")
+	case []string:
+		return strings.Join(v, "|")
+	case nil:
+		return ""
+	default:
+		return fmt.Sprint(v)
+	}
 }
 
 // Project DTO

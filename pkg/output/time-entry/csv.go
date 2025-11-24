@@ -3,6 +3,7 @@ package timeentry
 import (
 	"encoding/csv"
 	"io"
+	"strings"
 	"time"
 
 	"github.com/lucassabreu/clockify-cli/api/dto"
@@ -26,6 +27,7 @@ func TimeEntriesCSVPrint(timeEntries []dto.TimeEntry, out io.Writer) error {
 		"user.email",
 		"user.name",
 		"tags...",
+		"customFields...",
 	}); err != nil {
 		return err
 	}
@@ -74,8 +76,10 @@ func TimeEntriesCSVPrint(timeEntries []dto.TimeEntry, out io.Writer) error {
 			te.User.Name,
 		}
 
-		if err := w.Write(append(
-			arr, tagsToStringSlice(te.Tags)...)); err != nil {
+		arr = append(arr, strings.Join(tagsToStringSlice(te.Tags), ";"))
+		arr = append(arr, strings.Join(customFieldsToStringSlice(te.CustomFields), ";"))
+
+		if err := w.Write(arr); err != nil {
 			return err
 		}
 	}
