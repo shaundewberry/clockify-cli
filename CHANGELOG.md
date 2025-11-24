@@ -2,6 +2,7 @@
 title: Changelog
 chapter: true
 ---
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -10,6 +11,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [v0.58.0] - 2025-11-24
+
+### Added
+
+- reporting custom fields for the time entries
+
+### Thanks
+
+Thank you to [@calebtrepowski](https://github.com/calebtrepowski) for the implementing
+the improvements on [#282](https://github.com/lucassabreu/clockify-cli/pull/282).
 
 ## [v0.57.0] - 2025-10-14
 
@@ -1285,7 +1297,8 @@ time entry.
 - Golang CLI using [cobra](https://github.com/spf13/cobra)
 - Makefile to help setup actions
 
-[Unreleased]: https://github.com/lucassabreu/clockify-cli/compare/v0.57.0...HEAD
+[Unreleased]: https://github.com/lucassabreu/clockify-cli/compare/v0.58.0...HEAD
+[v0.58.0]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.58.0
 [v0.57.0]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.57.0
 [v0.56.2]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.56.2
 [v0.56.1]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.56.1
