@@ -41,9 +41,8 @@ func NewCmdInit(f cmdutil.Factory) *cobra.Command {
 			token := ""
 			if token, err = i.AskForText("User Generated Token:",
 				ui.WithDefault(config.GetString(cmdutil.CONF_TOKEN)),
-				ui.WithHelp("Can be generated in the following like, "+
-					"in the API section: "+
-					"https://clockify.me/user/settings#generateApiKeyBtn"),
+				ui.WithHelp("Can be generated at "+
+					"https://app.clockify.me/manage-api-keys"),
 			); err != nil {
 				return err
 			}
