@@ -12,6 +12,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.59.0] - 2026-01-20
+
+### Changed
+
+- change url for API token creation
+
+### Thanks
+
+Thank you to [@davidsneighbour](https://github.com/davidsneighbour) for the implementing
+the improvements on [#283](https://github.com/lucassabreu/clockify-cli/pull/283).
+
 ## [v0.58.0] - 2025-11-24
 
 ### Added
@@ -1297,7 +1308,8 @@ time entry.
 - Golang CLI using [cobra](https://github.com/spf13/cobra)
 - Makefile to help setup actions
 
-[Unreleased]: https://github.com/lucassabreu/clockify-cli/compare/v0.58.0...HEAD
+[Unreleased]: https://github.com/lucassabreu/clockify-cli/compare/v0.59.0...HEAD
+[v0.59.0]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.59.0
 [v0.58.0]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.58.0
 [v0.57.0]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.57.0
 [v0.56.2]: https://github.com/lucassabreu/clockify-cli/releases/tag/v0.56.2
