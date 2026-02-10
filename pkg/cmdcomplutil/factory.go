@@ -5,6 +5,7 @@ import "github.com/lucassabreu/clockify-cli/api"
 type config interface {
 	IsAllowNameForID() bool
 	IsSearchProjectWithClientsName() bool
+	GetBool(string) bool
 }
 
 type factory interface {

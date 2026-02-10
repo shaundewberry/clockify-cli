@@ -100,7 +100,7 @@ func AddReportFlags(
 	cmd.Flags().StringSliceVarP(&rf.TagIDs, "tag", "T", []string{},
 		"Will filter time entries using these tags")
 	_ = cmdcompl.AddSuggestionsToFlag(cmd, "tag",
-		cmdcomplutil.NewTagAutoComplete(f))
+		cmdcomplutil.NewTagAutoComplete(f, f.Config()))
 
 	cmd.Flags().BoolVar(&rf.Billable, "billable", false,
 		"Will filter time entries that are billable")

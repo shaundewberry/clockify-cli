@@ -24,7 +24,7 @@ func AddTimeEntryFlags(
 
 	cmd.Flags().StringSliceP("tag", "T", []string{}, "add tags to the entry (can be used multiple times)")
 	_ = cmdcompl.AddSuggestionsToFlag(cmd, "tag",
-		cmdcomplutil.NewTagAutoComplete(f))
+		cmdcomplutil.NewTagAutoComplete(f, f.Config()))
 
 	cmd.Flags().BoolP("allow-incomplete", "A", false,
 		"allow creation of incomplete time entries to be edited later")
@@ -47,7 +47,7 @@ func AddTimeEntryFlags(
 	// deprecations
 	cmd.Flags().StringSlice("tags", []string{}, "add tags to the entry")
 	_ = cmdcompl.AddSuggestionsToFlag(cmd, "tags",
-		cmdcomplutil.NewTagAutoComplete(f))
+		cmdcomplutil.NewTagAutoComplete(f, f.Config()))
 	_ = cmd.Flags().MarkDeprecated("tags", "use tag instead")
 }
 

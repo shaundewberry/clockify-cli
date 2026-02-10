@@ -8,8 +8,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const allowArchivedTagsConfigName = "allow-archived-tags"
+
 // NewTagAutoComplete will provide auto-completion to flags or args
-func NewTagAutoComplete(f factory) cmdcompl.SuggestFn {
+func NewTagAutoComplete(f factory, cnf config) cmdcompl.SuggestFn {
 	return func(
 		cmd *cobra.Command, args []string, toComplete string,
 	) (cmdcompl.ValidArgs, error) {
@@ -23,10 +25,16 @@ func NewTagAutoComplete(f factory) cmdcompl.SuggestFn {
 			return cmdcompl.EmptyValidArgs(), err
 		}
 
-		b := false
+		allowArchived := cnf.GetBool(allowArchivedTagsConfigName)
+		var archived *bool
+		if !allowArchived {
+			b := false
+			archived = &b
+		}
+
 		projects, err := c.GetTags(api.GetTagsParam{
 			Workspace:       w,
-			Archived:        &b,
+			Archived:        archived,
 			PaginationParam: api.AllPages(),
 		})
 		if err != nil {
