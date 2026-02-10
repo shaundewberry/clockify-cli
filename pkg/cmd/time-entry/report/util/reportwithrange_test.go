@@ -428,10 +428,12 @@ func TestReportWithRange(t *testing.T) {
 
 				c := mocks.NewMockClient(t)
 				f.On("Client").Return(c, nil)
+				allowArchived := false
 
 				tag := dto.Tag{ID: "t1", Name: "Client"}
 				c.On("GetTags", api.GetTagsParam{
 					Workspace:       "w",
+					Archived:        &allowArchived,
 					PaginationParam: api.AllPages(),
 				}).Return([]dto.Tag{tag}, nil)
 

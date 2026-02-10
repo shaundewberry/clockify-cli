@@ -162,7 +162,11 @@ func ReportWithRange(
 
 	if len(rf.TagIDs) > 0 && f.Config().IsAllowNameForID() {
 		if rf.TagIDs, err = search.GetTagsByName(
-			c, workspace, rf.TagIDs); err != nil {
+			c,
+			workspace,
+			rf.TagIDs,
+			f.Config().GetBool(cmdutil.CONF_ALLOW_ARCHIVED_TAGS),
+		); err != nil {
 			return err
 		}
 	}

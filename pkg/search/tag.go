@@ -10,13 +10,21 @@ func GetTagsByName(
 	c api.Client,
 	workspace string,
 	tags []string,
+	allowArchived bool,
 ) ([]string, error) {
 	if len(tags) == 0 {
 		return tags, nil
 	}
 
+	var archived *bool
+	if !allowArchived {
+		f := false
+		archived = &f
+	}
+
 	ts, err := c.GetTags(api.GetTagsParam{
 		Workspace:       workspace,
+		Archived:        archived,
 		PaginationParam: api.AllPages(),
 	})
 	if err != nil {

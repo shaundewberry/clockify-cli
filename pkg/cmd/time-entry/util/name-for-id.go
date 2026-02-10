@@ -16,7 +16,7 @@ func GetAllowNameForIDsFn(config cmdutil.Config, c api.Client) Step {
 	cbs := []Step{
 		lookupProject(c, config),
 		lookupTask(c),
-		lookupTags(c),
+		lookupTags(c, config),
 	}
 
 	if config.IsInteractive() {
@@ -59,14 +59,19 @@ func lookupTask(c api.Client) Step {
 	}
 }
 
-func lookupTags(c api.Client) Step {
+func lookupTags(c api.Client, config cmdutil.Config) Step {
 	return func(te TimeEntryDTO) (TimeEntryDTO, error) {
 		if len(te.TagIDs) == 0 {
 			return te, nil
 		}
 
 		var err error
-		te.TagIDs, err = search.GetTagsByName(c, te.Workspace, te.TagIDs)
+		te.TagIDs, err = search.GetTagsByName(
+			c,
+			te.Workspace,
+			te.TagIDs,
+			config.GetBool(cmdutil.CONF_ALLOW_ARCHIVED_TAGS),
+		)
 		return te, err
 	}
 

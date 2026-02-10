@@ -582,6 +582,7 @@ func TestGetAllowNameForIDsFn_ShouldLookupEntityIDs_WhenFilled(t *testing.T) {
 
 	cf := &mocks.SimpleConfig{AllowNameForID: true}
 	c := mocks.NewMockClient(t)
+	allowArchived := false
 
 	c.EXPECT().GetProjects(api.GetProjectsParam{
 		Workspace:       te.Workspace,
@@ -599,6 +600,7 @@ func TestGetAllowNameForIDsFn_ShouldLookupEntityIDs_WhenFilled(t *testing.T) {
 
 	c.EXPECT().GetTags(api.GetTagsParam{
 		Workspace:       te.Workspace,
+		Archived:        &allowArchived,
 		PaginationParam: api.AllPages(),
 	}).
 		Return([]dto.Tag{
@@ -661,6 +663,7 @@ func TestGetAllowNameForIDsFn_ShouldFail_WhenEntitiesNotFound(t *testing.T) {
 
 	cf := &mocks.SimpleConfig{AllowNameForID: true}
 	c := mocks.NewMockClient(t)
+	allowArchived := false
 
 	c.EXPECT().GetProjects(mock.Anything).Return([]dto.Project{}, nil).Once()
 	c.EXPECT().GetTasks(mock.Anything).Return([]dto.Task{}, nil).Once()
@@ -700,6 +703,7 @@ func TestGetAllowNameForIDsFn_ShouldFail_WhenEntitiesNotFound(t *testing.T) {
 
 	c.EXPECT().GetTags(api.GetTagsParam{
 		Workspace:       te.Workspace,
+		Archived:        &allowArchived,
 		PaginationParam: api.AllPages(),
 	}).
 		Return([]dto.Tag{{ID: "tg_id_1", Name: "t1"}}, nil)
